@@ -5,6 +5,11 @@
 
 using namespace std;
 
+enum class ColumnType {
+    Numeric,
+    Test
+};
+
 struct DataColumn;
 
 #endif // COLUMN_STRUCT
