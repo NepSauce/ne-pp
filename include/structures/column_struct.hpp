@@ -2,14 +2,18 @@
 #define COLUMN_STRUCT_HPP
 
 #include <string>
-
-using namespace std;
+#include <vector>
 
 enum class ColumnType {
     Numeric,
-    Test
+    Text
 };
 
-struct DataColumn;
+struct DataColumn {
+    std::string header;
+    ColumnType type;
+    std::vector<std::string> data;
+    std::vector<int> nullPosition;
+};
 
 #endif // COLUMN_STRUCT
