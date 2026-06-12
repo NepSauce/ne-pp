@@ -11,9 +11,10 @@ class CSVParser {
         bool header;
         char delimiter;
 
-        int* unloadCSV();
+        std::vector<DataColumn> parseColumn();
+
     public:
-        CSVParser(std::string filePath, bool header, char delimiter);
+        CSVParser(const std::string& filePath, bool header, char delimiter);
         std::unique_ptr<DataFile> dataFrame();
 };
 
