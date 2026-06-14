@@ -13,11 +13,12 @@ enum CorpusType {
 class FileReader {
     private:
      std::string filePath;
+     std::vector<std::string> corpusBody;
      CorpusType corpusType;
 
     public:
-        FileReader(std::string filePath);
-        std::vector<std::string> getCorpusBody();
+        FileReader(std::string filePath, CorpusType corpusType);
+        std::vector<std::string> getCorpusBodyVector();
 };
 
 #endif
