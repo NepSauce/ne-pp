@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 
+#include "../core/exceptions.hpp"
+
 enum CorpusType {
     CSV
 };

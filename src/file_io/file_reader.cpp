@@ -1,21 +1,20 @@
 #include "file_io/file_reader.hpp"
 
-class FileReader {
-    private:
-        std::string filePath;
-        std::vector<std::string> corpusBody;
-        CorpusType corpusType;
+FileReader::FileReader(std::string filePath, CorpusType corpusType)
+    : filePath(filePath), corpusType(corpusType) {}
 
-    public:
-        FileReader(std::string filePath, CorpusType corpusType) 
-            : filePath(filePath), corpusType(corpusType) {
-        }
+std::vector<std::string> FileReader::getCorpusBodyVector() {
+    std::ifstream file(filePath);
+    std::string line;
 
-        std::vector<std::string> getCorpusBodyVector() {
-            std::ifstream file(filePath);
+    if (!file.is_open()) {
+        throw FileNotFoundException("File path error: " + this->filePath);
+    }
 
-            if (!file.is_open()) {
-                
-            }
-        }
-};
+    while (std::getline(file, line)) {
+        this->corpusBody.push_back(line);
+    }
+
+    file.close();
+    return this->corpusBody;
+}
