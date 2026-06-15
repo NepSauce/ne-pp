@@ -3,7 +3,7 @@
 
 #include <string>
 #include "../structures/file_struct.hpp"
-
+#include "../file_io/file_reader.hpp"
 
 class CSVParser {
     private:
@@ -12,6 +12,7 @@ class CSVParser {
         char delimiter;
 
         std::vector<DataColumn> parseColumn();
+        std::vector<std::string> splitLine(std::string line);
 
     public:
         CSVParser(const std::string& filePath, bool header, char delimiter);
