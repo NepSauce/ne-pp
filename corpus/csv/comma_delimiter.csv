@@ -1,0 +1,33 @@
+id,name,age,height_cm,weight_kg,email,city,country,salary,department,is_active,score,joined_date,notes
+1,Alice Mercer,28,165.2,62.4,alice.mercer@email.com,Toronto,Canada,72000,Engineering,true,88.5,2021-03-15,top performer
+2,Bob Tanaka,34,178.9,80.1,bob.tanaka@email.com,Tokyo,Japan,95000,Research,true,91.2,2019-07-22,
+3,Clara Osei,22,160.0,55.7,clara.osei@email.com,Accra,Ghana,48000,Marketing,true,76.3,2023-01-10,new hire
+4,David Nkosi,45,182.3,90.5,david.nkosi@email.com,Johannesburg,South Africa,110000,Management,true,94.1,2015-06-01,
+5,Eva Rossi,31,170.1,67.8,eva.rossi@email.com,Rome,Italy,68000,Engineering,false,82.7,2020-11-30,on leave
+6,Frank Liu,29,175.4,73.2,frank.liu@email.com,Shanghai,China,87000,Research,true,89.9,2021-08-14,
+7,Grace Patel,38,158.6,58.3,grace.patel@email.com,Mumbai,India,76000,HR,true,85.4,2018-02-28,
+8,Henry Müller,52,180.0,85.6,henry.muller@email.com,Berlin,Germany,120000,Management,true,96.0,2010-04-17,veteran
+9,Isla Kim,25,163.4,57.1,isla.kim@email.com,Seoul,South Korea,54000,Marketing,true,79.8,2022-09-05,
+10,James Okafor,41,176.7,82.3,james.okafor@email.com,Lagos,Nigeria,92000,Engineering,false,88.1,2016-12-20,remote
+11,Karen Sousa,33,167.9,64.5,karen.sousa@email.com,São Paulo,Brazil,61000,HR,true,83.6,2019-05-11,
+12,Leo Dupont,27,172.3,71.0,leo.dupont@email.com,Paris,France,73000,Engineering,true,87.3,2021-01-25,
+13,Maya Singh,36,155.8,52.4,maya.singh@email.com,Delhi,India,69000,Research,true,90.5,2017-10-03,
+14,Noah Carter,23,181.2,78.9,noah.carter@email.com,New York,USA,58000,Marketing,true,74.2,2023-06-18,intern
+15,Olivia Fernandez,30,162.5,60.0,olivia.fernandez@email.com,Madrid,Spain,67000,Engineering,true,86.9,2020-03-07,
+16,Paul Adesanya,48,179.6,88.2,paul.adesanya@email.com,Abuja,Nigeria,105000,Management,false,92.7,2013-08-29,
+17,Quinn Walsh,26,168.3,65.7,quinn.walsh@email.com,Dublin,Ireland,71000,HR,true,81.4,2022-02-14,
+18,Rita Yamamoto,43,157.2,53.8,rita.yamamoto@email.com,Osaka,Japan,98000,Research,true,93.8,2014-11-09,
+19,Sam Brooks,35,174.1,76.4,sam.brooks@email.com,London,UK,84000,Engineering,true,88.8,2018-07-16,
+20,Tara Mensah,29,161.7,59.2,tara.mensah@email.com,Kumasi,Ghana,52000,Marketing,false,77.5,2021-04-22,
+21,Uma Petrov,31,166.4,63.1,uma.petrov@email.com,Moscow,Russia,79000,Research,true,89.3,2020-09-13,
+22,Victor Ng,44,177.8,81.7,victor.ng@email.com,Hong Kong,China,115000,Management,true,95.2,2012-01-30,
+23,Wendy Osei,28,159.3,56.8,wendy.osei@email.com,Accra,Ghana,49000,HR,true,78.6,2022-07-04,
+24,Xander Blake,37,183.5,91.3,xander.blake@email.com,Sydney,Australia,97000,Engineering,true,91.7,2017-03-19,
+25,Yuki Tanaka,24,154.6,50.2,yuki.tanaka@email.com,Kyoto,Japan,51000,Marketing,true,75.9,2023-02-28,
+26,Zoe Adeyemi,32,169.7,66.3,zoe.adeyemi@email.com,Lagos,Nigeria,74000,Engineering,false,84.1,2019-10-07,
+27,Aaron Müller,55,176.2,83.4,aaron.muller@email.com,Munich,Germany,130000,Management,true,97.3,2008-05-14,long tenure
+28,Bella Souza,27,164.8,61.5,bella.souza@email.com,Rio de Janeiro,Brazil,63000,HR,true,82.0,2021-11-20,
+29,Carlos Rivera,39,171.5,75.8,carlos.rivera@email.com,Mexico City,Mexico,88000,Research,true,90.1,2016-08-25,
+30,Diana Chen,46,158.9,54.6,diana.chen@email.com,Beijing,China,108000,Management,true,94.6,2011-02-11,
+31,Ethan Moore,21,,58.3,ethan.moore@email.com,Chicago,USA,45000,Marketing,true,71.8,2023-08-01,missing height
+32,Fiona Grant,34,166.1,63.9,,Edinburgh,UK,78000,Engineering,false,86.2,2018-04-16,missing email
