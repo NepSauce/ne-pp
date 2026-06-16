@@ -14,3 +14,16 @@ class FileNotFoundException : public std::exception {
         }
 
 };
+
+class LengthMismatchException : public std::exception {
+    private:
+        std::string message;
+    
+    public:
+        LengthMismatchException(const std::string& message)
+            : message(message) {}
+        
+        const char* what() const noexcept override {
+            return message.c_str();
+        }
+};

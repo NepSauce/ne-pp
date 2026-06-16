@@ -36,8 +36,8 @@ std::vector<DataColumn> CSVParser::parseColumn() {
             }
         }
     } catch (const std::out_of_range& e) {
-        throw FileNotFoundException("");
-    } // placeholder to-do
+        throw LengthMismatchException("Length mismatch error");
+    } 
 
     return parsedColumns;
 }
