@@ -11,6 +11,10 @@ std::vector<std::string> FileReader::getCorpusBodyVector() {
         throw FileNotFoundException("File path error: " + this->filePath);
     }
 
+    if (file.peek() == std::ifstream::traits_type::eof()){
+        throw EOFException("File empty or invalid error");
+    }
+
     while (std::getline(file, line)) {
         this->corpusBody.push_back(line);
     }
