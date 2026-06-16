@@ -6,6 +6,8 @@ CSVParser::CSVParser(const std::string& filePath, bool header, char delimiter)
 std::vector<DataColumn> CSVParser::parseColumn() {
     std::vector<std::string> corpusBody;
     std::vector<std::string> headerVector;
+    int rowLength;
+    int columnLength;
     FileReader fileReader(this->filePath, CSV);
     corpusBody = fileReader.getCorpusBodyVector();
 
@@ -13,8 +15,16 @@ std::vector<DataColumn> CSVParser::parseColumn() {
         headerVector = splitStringVector(corpusBody[0]);
     }
 
-    for (const std::string& line : corpusBody) {
-        std::cout << line << std::endl;
+    rowLength = splitStringVector(corpusBody[0]).size();
+    columnLength = corpusBody.size();
+    std::vector<DataColumn> parsedColumns(rowLength);
+
+    for (int i = 0; i < columnLength; i++) {
+        for (int j = 0; j < rowLength; j++) {
+            if (this->header == true) {
+                parsedColumns[j].header = this->header;
+            }
+        }
     }
 }
 
