@@ -9,6 +9,7 @@ std::vector<DataColumn> CSVParser::parseColumn() {
     int rowLength;
     int columnLength;
     FileReader fileReader(this->filePath, CSV);
+
     corpusBody = fileReader.getCorpusBodyVector();
 
     rowLength = splitStringVector(corpusBody[0]).size();
@@ -52,4 +53,8 @@ std::vector<std::string> CSVParser::splitStringVector(std::string line) {
     }
 
     return stringVector;
+}
+
+ColumnType CSVParser::findColumnType(std::string token) {
+    
 }
