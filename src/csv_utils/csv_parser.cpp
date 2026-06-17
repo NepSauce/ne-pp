@@ -55,6 +55,6 @@ std::vector<std::string> CSVParser::splitStringVector(std::string line) {
     return stringVector;
 }
 
-ColumnType CSVParser::findColumnType(std::string token) {
-    
+DataType CSVParser::findDataType(std::string token) {
+
 }

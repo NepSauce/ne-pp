@@ -16,7 +16,7 @@ class CSVParser {
 
         std::vector<DataColumn> parseColumn();
         std::vector<std::string> splitStringVector(std::string line);
-        ColumnType findColumnType(std::string token);
+        DataType findDataType(std::string token);
 
     public:
         CSVParser(const std::string& filePath, bool header, char delimiter);
