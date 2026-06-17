@@ -11,21 +11,35 @@ std::vector<DataColumn> CSVParser::parseColumn() {
     FileReader fileReader(this->filePath, CSV);
     corpusBody = fileReader.getCorpusBodyVector();
 
-    if (this->header == true) {
-        headerVector = splitStringVector(corpusBody[0]);
-    }
-
     rowLength = splitStringVector(corpusBody[0]).size();
     columnLength = corpusBody.size();
     std::vector<DataColumn> parsedColumns(rowLength);
 
-    for (int i = 0; i < columnLength; i++) {
-        for (int j = 0; j < rowLength; j++) {
-            if (this->header == true) {
-                parsedColumns[j].header = this->header;
-            }
+    if (this->header == true) {
+        headerVector = splitStringVector(corpusBody[0]);
+
+        for (int i = 0; i < rowLength; i++) {
+            parsedColumns[i].header = headerVector[i];
         }
     }
+
+    try {
+        for (int i = 0; i < columnLength; i++) {
+            if (this->header == true && i == 0) {
+                continue;
+            } 
+
+            std::vector<std::string> line = splitStringVector(corpusBody[i]);
+
+            for (int j = 0; j < rowLength; j++) {
+                parsedColumns[j].data.push_back(line[j]);
+            }
+        }
+    } catch (const std::out_of_range& e) {
+        throw LengthMismatchException("Length mismatch error");
+    } 
+
+    return parsedColumns;
 }
 
 std::vector<std::string> CSVParser::splitStringVector(std::string line) {
