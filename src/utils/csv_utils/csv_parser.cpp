@@ -1,4 +1,4 @@
-#include "../../include/csv_utils/csv_parser.hpp"
+#include "../../include/utils/csv_utils/csv_parser.hpp"
 
 CSVParser::CSVParser(const std::string& filePath, bool header, char delimiter)
     : filePath(filePath), header(header), delimiter(delimiter) {}
@@ -56,5 +56,6 @@ std::vector<std::string> CSVParser::splitStringVector(std::string line) {
 }
 
 DataType CSVParser::findDataType(std::string token) {
+    if (token.empty()) return DataType::Null;
 
 }
