@@ -4,14 +4,15 @@
 #include <string>
 #include <vector>
 
-enum class ColumnType {
+enum class DataType {
     Numeric,
-    Text
+    Text,
+    Null
 };
 
 struct DataColumn {
     std::string header;
-    ColumnType type;
+    DataType type;
     std::vector<std::string> data;
     std::vector<int> nullPosition;
 };

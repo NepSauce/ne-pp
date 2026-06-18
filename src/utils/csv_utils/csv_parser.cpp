@@ -1,4 +1,4 @@
-#include "../../include/csv_utils/csv_parser.hpp"
+#include "../../include/utils/csv_utils/csv_parser.hpp"
 
 CSVParser::CSVParser(const std::string& filePath, bool header, char delimiter)
     : filePath(filePath), header(header), delimiter(delimiter) {}
@@ -9,6 +9,7 @@ std::vector<DataColumn> CSVParser::parseColumn() {
     int rowLength;
     int columnLength;
     FileReader fileReader(this->filePath, CSV);
+
     corpusBody = fileReader.getCorpusBodyVector();
 
     rowLength = splitStringVector(corpusBody[0]).size();
@@ -52,4 +53,9 @@ std::vector<std::string> CSVParser::splitStringVector(std::string line) {
     }
 
     return stringVector;
+}
+
+DataType CSVParser::findDataType(std::string token) {
+    if (token.empty()) return DataType::Null;
+
 }
