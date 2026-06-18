@@ -7,7 +7,13 @@
 
 #include "column_struct.hpp"
 
-struct DataFile {
+enum CorpusType {
+    CSV,
+    JSON,
+    Text
+};
+
+struct CSVDataFile {
     std::string filePath;
     std::vector<DataColumn> columns;
     std::unordered_map<std::string, int> headerIndex;
