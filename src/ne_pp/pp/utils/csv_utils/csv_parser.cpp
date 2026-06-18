@@ -1,4 +1,4 @@
-#include "../../include/utils/csv_utils/csv_parser.hpp"
+#include "../../../../../include/ne_pp/pp/utils/csv_utils/csv_parser.hpp"
 
 CSVParser::CSVParser(const std::string& filePath, bool header, char delimiter)
     : filePath(filePath), header(header), delimiter(delimiter) {}

@@ -1,4 +1,4 @@
-#include "../../include/file_io/file_reader.hpp"
+#include "../../../../include/ne_pp/pp/file_io/file_reader.hpp"
 
 FileReader::FileReader(std::string filePath, CorpusType corpusType)
     : filePath(filePath), corpusType(corpusType) {}

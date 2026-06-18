@@ -5,8 +5,8 @@
 #include <sstream>
 #include <typeinfo>
 
-#include "../structures/file_struct.hpp"
-#include "../file_io/file_reader.hpp"
+#include "../../structures/file_struct.hpp"
+#include "../../file_io/file_reader.hpp"
 
 class CSVParser {
     private:
