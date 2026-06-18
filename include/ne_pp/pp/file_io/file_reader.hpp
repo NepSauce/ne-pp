@@ -10,8 +10,8 @@
 namespace ne_pp::pp {
 class FileReader {
     private:
-     std::string filePath;
-     std::vector<std::string> corpusBody;
+        std::string filePath;
+        std::vector<std::string> corpusBody;
 
     public:
         FileReader(std::string filePath);
