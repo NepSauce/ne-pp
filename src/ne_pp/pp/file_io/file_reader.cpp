@@ -1,8 +1,8 @@
 #include "../../../../include/ne_pp/pp/file_io/file_reader.hpp"
 
 namespace ne_pp::pp {
-FileReader::FileReader(std::string filePath, CorpusType corpusType)
-    : filePath(filePath), corpusType(corpusType) {}
+FileReader::FileReader(std::string filePath)
+    : filePath(filePath) {}
 
 std::vector<std::string> FileReader::getCorpusBodyVector() {
     std::ifstream file(filePath);

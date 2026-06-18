@@ -4,18 +4,18 @@ namespace ne_pp::pp {
 CSVParser::CSVParser(const std::string& filePath, bool header, char delimiter)
     : filePath(filePath), header(header), delimiter(delimiter) {}
 
-std::vector<DataColumn> CSVParser::parseColumn() {
+std::vector<CSVDataColumn> CSVParser::parseColumn() {
     std::vector<std::string> corpusBody;
     std::vector<std::string> headerVector;
     int rowLength;
     int columnLength;
-    FileReader fileReader(this->filePath, CSV);
+    FileReader fileReader(this->filePath);
 
     corpusBody = fileReader.getCorpusBodyVector();
 
     rowLength = splitStringVector(corpusBody[0]).size();
     columnLength = corpusBody.size();
-    std::vector<DataColumn> parsedColumns(rowLength);
+    std::vector<CSVDataColumn> parsedColumns(rowLength);
 
     if (this->header == true) {
         headerVector = splitStringVector(corpusBody[0]);
