@@ -1,6 +1,7 @@
 #include <exception>
 #include <string>
 
+namespace ne_pp::pp {
 class FileNotFoundException : public std::exception {
     private:
         std::string message;
@@ -42,3 +43,4 @@ class LengthMismatchException : public std::exception {
             return message.c_str();
         }
 };
+}

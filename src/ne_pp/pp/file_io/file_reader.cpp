@@ -1,5 +1,6 @@
 #include "../../../../include/ne_pp/pp/file_io/file_reader.hpp"
 
+namespace ne_pp::pp {
 FileReader::FileReader(std::string filePath, CorpusType corpusType)
     : filePath(filePath), corpusType(corpusType) {}
 
@@ -21,4 +22,5 @@ std::vector<std::string> FileReader::getCorpusBodyVector() {
 
     file.close();
     return this->corpusBody;
+}
 }

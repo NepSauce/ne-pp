@@ -7,7 +7,7 @@
 #include <vector>
 
 #include "../core/exceptions.hpp"
-
+namespace ne_pp::pp {
 enum CorpusType {
     CSV
 };
@@ -22,5 +22,5 @@ class FileReader {
         FileReader(std::string filePath, CorpusType corpusType);
         std::vector<std::string> getCorpusBodyVector();
 };
-
+}
 #endif
