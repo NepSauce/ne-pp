@@ -15,13 +15,13 @@ class CSVParser {
         bool header;
         char delimiter;
 
-        std::vector<DataColumn> parseColumn();
+        std::vector<CSVDataColumn> parseColumn();
         std::vector<std::string> splitStringVector(std::string line);
         DataType findDataType(std::string token);
 
     public:
         CSVParser(const std::string& filePath, bool header, char delimiter);
-        std::unique_ptr<DataFile> dataFrame();
+        std::unique_ptr<CSVDataFile> dataFrame();
 };
 }
 

@@ -7,10 +7,17 @@
 
 #include "column_struct.hpp"
 
-struct DataFile {
-    std::string filePath;
-    std::vector<DataColumn> columns;
-    std::unordered_map<std::string, int> headerIndex;
+namespace ne_pp::pp {
+enum CorpusType {
+    CSV,
+    JSON,
+    Text
 };
 
+struct CSVDataFile {
+    std::string filePath;
+    std::vector<CSVDataColumn> columns;
+    std::unordered_map<std::string, int> headerIndex;
+};
+}
 #endif

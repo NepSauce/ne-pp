@@ -4,17 +4,19 @@
 #include <string>
 #include <vector>
 
+namespace ne_pp::pp {
 enum class DataType {
     Numeric,
     Text,
     Null
 };
 
-struct DataColumn {
+struct CSVDataColumn {
     std::string header;
     DataType type;
     std::vector<std::string> data;
     std::vector<int> nullPosition;
 };
+}
 
 #endif // COLUMN_STRUCT
