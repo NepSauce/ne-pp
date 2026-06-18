@@ -5,9 +5,10 @@
 #include <sstream>
 #include <typeinfo>
 
-#include "../structures/file_struct.hpp"
-#include "../file_io/file_reader.hpp"
+#include "../../structures/file_struct.hpp"
+#include "../../file_io/file_reader.hpp"
 
+namespace ne_pp::pp {
 class CSVParser {
     private:
         std::string filePath;
@@ -22,5 +23,6 @@ class CSVParser {
         CSVParser(const std::string& filePath, bool header, char delimiter);
         std::unique_ptr<DataFile> dataFrame();
 };
+}
 
 #endif
