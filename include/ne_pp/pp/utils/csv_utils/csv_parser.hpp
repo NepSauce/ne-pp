@@ -21,7 +21,7 @@ class CSVParser {
 
     public:
         CSVParser(const std::string& filePath, bool header, char delimiter);
-        std::unique_ptr<DataFile> dataFrame();
+        std::unique_ptr<CSVDataFile> dataFrame();
 };
 }
 
