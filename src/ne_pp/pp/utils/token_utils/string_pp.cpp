@@ -20,6 +20,7 @@ StringPP& StringPP::trimRight() {
     });
 
     this->value.erase(it.base(), this->value.end());
+
     return *this;
 }
 
@@ -31,6 +32,6 @@ StringPP& StringPP::trim() {
 }
 
 std::string StringPP::toString() const {
-
+    return this->value;
 }
 }
