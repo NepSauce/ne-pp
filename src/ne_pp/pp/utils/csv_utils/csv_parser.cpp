@@ -6,20 +6,23 @@ CSVParser::CSVParser(const std::string& filePath, bool header, char delimiter)
     : filePath(filePath), header(header), delimiter(delimiter) {}
 
 std::vector<CSVDataColumn> CSVParser::parseColumn() {
-    std::vector<std::string> corpusBody;
-    std::vector<std::string> headerVector;
-    int rowLength;
-    int columnLength;
     FileReader fileReader(this->filePath);
+    const std::vector<std::string>& corpusBody = fileReader.getCorpusBodyVector();
 
-    corpusBody = fileReader.getCorpusBodyVector();
+    // to-do: correct error type
+    if (corpusBody.empty()) {
+        throw EmptyStringException("Empty corpus error");
+    }
 
-    rowLength = StringPP(corpusBody[0]).split(this->delimiter).size();
-    columnLength = corpusBody.size();
+    int rowLength = StringPP(corpusBody[0]).split(this->delimiter).size();
+    int columnLength = corpusBody.size();
+    
     std::vector<CSVDataColumn> parsedColumns(rowLength);
 
-    if (this->header == true) {
-        headerVector = StringPP(corpusBody[0]).split(this->delimiter);
+    int startRow = 0;
+
+    if (this->header) {
+        std::vector<std::string> headerVector = StringPP(corpusBody[0]).split(this->delimiter);
 
         for (int i = 0; i < rowLength; i++) {
             parsedColumns[i].header = headerVector[i];
