@@ -13,7 +13,6 @@ class FileNotFoundException : public std::exception {
         const char* what() const noexcept override {
             return message.c_str();
         }
-
 };
 
 class EOFException : public std::exception {
@@ -27,7 +26,6 @@ class EOFException : public std::exception {
         const char* what() const noexcept override {
             return message.c_str();
         }
-
 };
 
 
@@ -42,5 +40,14 @@ class LengthMismatchException : public std::exception {
         const char* what() const noexcept override {
             return message.c_str();
         }
+};
+
+class EmptyStringException : public std::exception {
+    private:
+        std::string message;
+
+    public:
+        EmptyStringException(const std::string& message)
+            : message(message) {}
 };
 }
