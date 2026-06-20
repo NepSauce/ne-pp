@@ -58,6 +58,5 @@ std::vector<std::string> CSVParser::splitStringVector(std::string line) {
 
 DataType CSVParser::findDataType(std::string token) {
     if (token.empty()) return DataType::Null;
-    return;
 }
 }
