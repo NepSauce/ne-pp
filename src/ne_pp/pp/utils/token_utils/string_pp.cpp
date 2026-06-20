@@ -21,6 +21,8 @@ std::string StringPP::trimRight() const {
 }
 
 std::string StringPP::trim() const {
-    
+    std::string leftTrimmed = this->trimLeft();
+
+    return StringPP(leftTrimmed).trimRight();
 }
 }
