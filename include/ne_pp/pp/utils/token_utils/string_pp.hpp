@@ -5,6 +5,7 @@
 #include <string>
 #include <cctype>
 #include <algorithm>
+#include <vector>
 
 namespace ne_pp::pp {
 class StringPP {
@@ -17,6 +18,11 @@ class StringPP {
     StringPP& trimRight();
     StringPP& trimLeft();
     StringPP& trim();
+    StringPP& toLower();
+    StringPP& toUpper();
+    StringPP& capitalize();
+    std::vector<std::string> split(char delimiter) const;
+    int find(char c);
 
     std::string toString() const;
 };    
