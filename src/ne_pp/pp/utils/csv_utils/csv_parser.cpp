@@ -16,7 +16,7 @@ std::vector<CSVDataColumn> CSVParser::parseColumn() {
 
     int rowLength = StringPP(corpusBody[0]).split(this->delimiter).size();
     int columnLength = corpusBody.size();
-    
+
     std::vector<CSVDataColumn> parsedColumns(rowLength);
 
     int startRow = 0;
@@ -27,18 +27,26 @@ std::vector<CSVDataColumn> CSVParser::parseColumn() {
         for (int i = 0; i < rowLength; i++) {
             parsedColumns[i].header = headerVector[i];
         }
+        
+        startRow = 1;
+    }
+
+    int expectedRows = columnLength - startRow;
+
+    for (int j = 0; j < rowLength; ++j) {
+        parsedColumns[j].data.reserve(expectedRows);
     }
 
     try {
-        for (int i = 0; i < columnLength; i++) {
-            if (this->header == true && i == 0) {
-                continue;
-            } 
+        for (int i = startRow; i < columnLength; ++i) {
+            std::vector<std::string> line = StringPP(corpusBody[i]).split(this->delimiter);
 
-            std::vector<std::string> line = splitStringVector(corpusBody[i]);
+            if (line.size() != static_cast<size_t>(rowLength)) {
+                throw LengthMismatchException("Malformed data row at line " + std::to_string(i));
+            }
 
-            for (int j = 0; j < rowLength; j++) {
-                parsedColumns[j].data.push_back(line[j]);
+            for (int j = 0; j < rowLength; ++j) {
+                parsedColumns[j].data.push_back(std::move(line[j]));
             }
         }
     } catch (const std::out_of_range& e) {
