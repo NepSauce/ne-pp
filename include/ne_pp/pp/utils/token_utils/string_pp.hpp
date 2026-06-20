@@ -6,6 +6,8 @@
 #include <cctype>
 #include <algorithm>
 #include <vector>
+#include <sstream>
+#include <typeinfo>
 
 namespace ne_pp::pp {
 class StringPP {

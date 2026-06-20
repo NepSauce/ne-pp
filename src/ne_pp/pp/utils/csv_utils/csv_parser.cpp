@@ -1,4 +1,5 @@
 #include "../../../../../include/ne_pp/pp/utils/csv_utils/csv_parser.hpp"
+#include "../../../../../include/ne_pp/pp/utils/token_utils/string_pp.hpp"
 
 namespace ne_pp::pp {
 CSVParser::CSVParser(const std::string& filePath, bool header, char delimiter)
@@ -13,12 +14,12 @@ std::vector<CSVDataColumn> CSVParser::parseColumn() {
 
     corpusBody = fileReader.getCorpusBodyVector();
 
-    rowLength = splitStringVector(corpusBody[0]).size();
+    rowLength = StringPP(corpusBody[0]).split(this->delimiter).size();
     columnLength = corpusBody.size();
     std::vector<CSVDataColumn> parsedColumns(rowLength);
 
     if (this->header == true) {
-        headerVector = splitStringVector(corpusBody[0]);
+        headerVector = StringPP(corpusBody[0]).split(this->delimiter);
 
         for (int i = 0; i < rowLength; i++) {
             parsedColumns[i].header = headerVector[i];
@@ -42,18 +43,6 @@ std::vector<CSVDataColumn> CSVParser::parseColumn() {
     } 
 
     return parsedColumns;
-}
-
-std::vector<std::string> CSVParser::splitStringVector(std::string line) {
-    std::vector<std::string> stringVector;
-    std::string word;
-    std::stringstream ss(line);
-
-    while (std::getline(ss, word, this->delimiter)) {
-        stringVector.push_back(word);
-    }
-
-    return stringVector;
 }
 
 DataType CSVParser::findDataType(std::string token) {
