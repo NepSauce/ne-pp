@@ -41,4 +41,13 @@ class LengthMismatchException : public std::exception {
             return message.c_str();
         }
 };
+
+class EmptyStringException : public std::exception {
+    private:
+        std::string message;
+
+    public:
+        EmptyStringException(const std::string& message)
+            : message(message) {}
+};
 }
