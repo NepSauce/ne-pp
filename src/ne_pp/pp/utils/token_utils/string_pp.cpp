@@ -4,25 +4,33 @@ namespace ne_pp::pp {
 StringPP::StringPP(std::string str)
     : value(std::move(str)) {}
     
-std::string StringPP::trimLeft() const {
+StringPP& StringPP::trimLeft() {
     auto it = std::find_if(this->value.begin(), this->value.end(), [](unsigned char ch) {
         return !std::isspace(ch);
     });
     
-    return std::string(it, this->value.end());
+    this->value.erase(this->value.begin(), it);
+
+    return *this;
 }
 
-std::string StringPP::trimRight() const {
+StringPP& StringPP::trimRight() {
     auto it = std::find_if(this->value.rbegin(), this->value.rend(), [](unsigned char ch) {
         return !std::isspace(ch);
     });
 
-    return std::string(this->value.begin(), it.base());
+    this->value.erase(it.base(), this->value.end());
+    return *this;
 }
 
-std::string StringPP::trim() const {
-    std::string leftTrimmed = this->trimLeft();
+StringPP& StringPP::trim() {
+    this->trimLeft();
+    this->trimRight();
 
-    return StringPP(leftTrimmed).trimRight();
+    return *this;
+}
+
+std::string StringPP::toString() const {
+
 }
 }

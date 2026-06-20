@@ -14,9 +14,11 @@ class StringPP {
     public:
     explicit StringPP(std::string str);
 
-    std::string trimRight() const;
-    std::string trimLeft() const;
-    std::string trim() const;
+    StringPP& trimRight();
+    StringPP& trimLeft();
+    StringPP& trim();
+
+    std::string toString() const;
 };    
 }
 
