@@ -2,7 +2,8 @@
 
 namespace ne_pp::pp {
 StringPP::StringPP(std::string str)
-    : value(std::move(str)) {}
+    : value(std::move(str)), WHITESPACE(" \n\r\t\f\v") {}
     
-
+std::string StringPP::trimLeft() const { 
+}
 }

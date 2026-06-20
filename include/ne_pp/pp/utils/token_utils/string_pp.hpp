@@ -10,6 +10,7 @@ namespace ne_pp::pp {
 class StringPP {
     private:
     std::string value;
+    const std::string  WHITESPACE;
 
     public:
     explicit StringPP(std::string str);
