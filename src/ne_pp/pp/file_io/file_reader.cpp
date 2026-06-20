@@ -4,7 +4,7 @@ namespace ne_pp::pp {
 FileReader::FileReader(std::string filePath)
     : filePath(filePath) {}
 
-std::vector<std::string> FileReader::getCorpusBodyVector() {
+const std::vector<std::string>& FileReader::getCorpusBodyVector() {
     std::ifstream file(filePath);
     std::string line;
 
