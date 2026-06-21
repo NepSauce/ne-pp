@@ -5,7 +5,7 @@
 #include <vector>
 
 namespace ne_pp::pp {
-enum class DataType {
+enum class CellType {
     Numeric,
     Text,
     Null
@@ -13,7 +13,7 @@ enum class DataType {
 
 struct CSVDataColumn {
     std::string header;
-    DataType type;
+    CellType type;
     std::vector<std::string> data;
     std::vector<int> nullPosition;
 };
