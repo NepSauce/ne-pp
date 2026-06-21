@@ -14,8 +14,8 @@ class FileReader {
         std::vector<std::string> corpusBody;
 
     public:
-        FileReader(std::string filePath);
-        std::vector<std::string> getCorpusBodyVector();
+        explicit FileReader(std::string filePath);
+        const std::vector<std::string>& getCorpusBodyVector();
 };
 }
 #endif

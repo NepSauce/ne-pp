@@ -1,40 +1,52 @@
 #include "../../../../../include/ne_pp/pp/utils/csv_utils/csv_parser.hpp"
+#include "../../../../../include/ne_pp/pp/utils/token_utils/string_pp.hpp"
 
 namespace ne_pp::pp {
 CSVParser::CSVParser(const std::string& filePath, bool header, char delimiter)
     : filePath(filePath), header(header), delimiter(delimiter) {}
 
 std::vector<CSVDataColumn> CSVParser::parseColumn() {
-    std::vector<std::string> corpusBody;
-    std::vector<std::string> headerVector;
-    int rowLength;
-    int columnLength;
     FileReader fileReader(this->filePath);
+    const std::vector<std::string>& corpusBody = fileReader.getCorpusBodyVector();
 
-    corpusBody = fileReader.getCorpusBodyVector();
+    // to-do: correct error type
+    if (corpusBody.empty()) {
+        throw EmptyStringException("Empty corpus error");
+    }
 
-    rowLength = splitStringVector(corpusBody[0]).size();
-    columnLength = corpusBody.size();
+    int rowLength = StringPP(corpusBody[0]).split(this->delimiter).size();
+    int columnLength = corpusBody.size();
+
     std::vector<CSVDataColumn> parsedColumns(rowLength);
 
-    if (this->header == true) {
-        headerVector = splitStringVector(corpusBody[0]);
+    int startRow = 0;
+
+    if (this->header) {
+        std::vector<std::string> headerVector = StringPP(corpusBody[0]).split(this->delimiter);
 
         for (int i = 0; i < rowLength; i++) {
             parsedColumns[i].header = headerVector[i];
         }
+        
+        startRow = 1;
+    }
+
+    int expectedRows = columnLength - startRow;
+
+    for (int j = 0; j < rowLength; ++j) {
+        parsedColumns[j].data.reserve(expectedRows);
     }
 
     try {
-        for (int i = 0; i < columnLength; i++) {
-            if (this->header == true && i == 0) {
-                continue;
-            } 
+        for (int i = startRow; i < columnLength; ++i) {
+            std::vector<std::string> line = StringPP(corpusBody[i]).split(this->delimiter);
 
-            std::vector<std::string> line = splitStringVector(corpusBody[i]);
+            if (line.size() != static_cast<size_t>(rowLength)) {
+                throw LengthMismatchException("Malformed data row at line " + std::to_string(i));
+            }
 
-            for (int j = 0; j < rowLength; j++) {
-                parsedColumns[j].data.push_back(line[j]);
+            for (int j = 0; j < rowLength; ++j) {
+                parsedColumns[j].data.push_back(std::move(line[j]));
             }
         }
     } catch (const std::out_of_range& e) {
@@ -44,20 +56,7 @@ std::vector<CSVDataColumn> CSVParser::parseColumn() {
     return parsedColumns;
 }
 
-std::vector<std::string> CSVParser::splitStringVector(std::string line) {
-    std::vector<std::string> stringVector;
-    std::string word;
-    std::stringstream ss(line);
-
-    while (std::getline(ss, word, this->delimiter)) {
-        stringVector.push_back(word);
-    }
-
-    return stringVector;
-}
-
 DataType CSVParser::findDataType(std::string token) {
     if (token.empty()) return DataType::Null;
-    return;
 }
 }

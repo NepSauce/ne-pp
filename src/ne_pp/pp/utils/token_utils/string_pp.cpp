@@ -31,6 +31,18 @@ StringPP& StringPP::trim() {
     return *this;
 }
 
+std::vector<std::string> StringPP::split(char delimiter) const {
+    std::vector<std::string> stringVector;
+    std::string word;
+    std::stringstream ss(this->value);
+
+    while (std::getline(ss, word, delimiter)) {
+        stringVector.push_back(word);
+    }
+
+    return stringVector;
+}
+
 std::string StringPP::toString() const {
     return this->value;
 }
