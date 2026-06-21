@@ -9,7 +9,6 @@ enum DataType {
     String,
     Integer,
     Float,
-    Double,
     Character,
     Boolean,
     Null,
@@ -21,4 +20,5 @@ class InferType {
         static DataType infer(std::string_view token);
 };
 }
+
 #endif
