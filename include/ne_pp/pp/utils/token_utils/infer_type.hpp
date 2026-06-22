@@ -1,6 +1,8 @@
 #ifndef INFER_TYPE_HPP
 #define INFER_TYPE_HPP
 
+#include "string_pp.hpp"
+
 #include <string_view>
 #include <cctype>
 
