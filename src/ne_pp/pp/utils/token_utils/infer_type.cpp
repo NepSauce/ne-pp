@@ -11,12 +11,41 @@ namespace ne_pp::pp {
 
     bool isInteger(std::string& token) {
         size_t start = 0;
-        
+
         if (token[0] == '-' || token[0] == '+') {
-            if (token.size() == 1) return false; 
+            if (token.size() == 1){
+                return false; 
+            }
             start = 1;
         }
 
-        return std::all_of(token.begin() + start, token.end(), ::isdigit);
+        return std::all_of(token.begin() + start, token.end(), [](unsigned char ch) {
+            return std::isdigit(ch);
+        });
+    }
+
+    bool isFloat(std::string& token) {
+        bool decimalPointFound = false;
+        size_t start = 0;
+
+        if (token[0] == '-' || token[0] == '+') {
+            if (token.size() == 1){
+                return false;
+            }   
+            start = 1;
+        }
+
+        for (size_t i = start; i < token.size(); ++i) {
+            if (token[i] == '.') {
+                if (decimalPointFound){
+                    return false; 
+                }
+                decimalPointFound = true;
+            } else if (!std::isdigit(static_cast<unsigned char>(token[i]))) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
