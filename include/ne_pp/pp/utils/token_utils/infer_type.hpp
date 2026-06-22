@@ -19,7 +19,6 @@ enum DataType {
 
 class InferType {
     private:
-        bool isString(std::string& token) const;
         bool isInteger(std::string& token) const;
         bool isFloat(std::string& token) const;
         bool isCharacter(std::string& token) const;

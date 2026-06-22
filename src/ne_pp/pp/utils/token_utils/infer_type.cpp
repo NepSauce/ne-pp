@@ -2,8 +2,21 @@
 
 namespace ne_pp::pp {
     DataType InferType::infer(std::string_view token) {
-        if (StringPP(std::string(token)).trim().toString().empty()) {
+        std::string trimmedToken = StringPP(std::string(token)).trim().toString();
+        
+        if (trimmedToken.empty()) {
             return DataType::Null;
         }
+    }
+
+    bool isInteger(std::string& token) {
+        size_t start = 0;
+        
+        if (token[0] == '-' || token[0] == '+') {
+            if (token.size() == 1) return false; 
+            start = 1;
+        }
+
+        return std::all_of(token.begin() + start, token.end(), ::isdigit);
     }
 }
