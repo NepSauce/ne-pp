@@ -7,9 +7,19 @@ namespace ne_pp::pp {
         if (trimmedToken.empty()) {
             return DataType::Null;
         }
+
+        if (isInteger(trimmedToken)) {
+            return DataType::Integer;
+        }
+
+        if (isFloat(trimmedToken)) {
+            return DataType::Float;
+        }
+
+        return DataType::String;
     }
 
-    bool InferType::isInteger(std::string& token) const {
+    bool InferType::isInteger(std::string& token) {
         size_t start = 0;
 
         if (token[0] == '-' || token[0] == '+') {
@@ -24,7 +34,7 @@ namespace ne_pp::pp {
         });
     }
 
-    bool InferType::isFloat(std::string& token) const {
+    bool InferType::isFloat(std::string& token) {
         bool decimalPointFound = false;
         size_t start = 0;
 
