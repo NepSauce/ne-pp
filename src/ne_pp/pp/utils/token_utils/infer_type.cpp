@@ -9,7 +9,7 @@ namespace ne_pp::pp {
         }
     }
 
-    bool isInteger(std::string& token) {
+    bool InferType::isInteger(std::string& token) const {
         size_t start = 0;
 
         if (token[0] == '-' || token[0] == '+') {
@@ -24,7 +24,7 @@ namespace ne_pp::pp {
         });
     }
 
-    bool isFloat(std::string& token) {
+    bool InferType::isFloat(std::string& token) const {
         bool decimalPointFound = false;
         size_t start = 0;
 
