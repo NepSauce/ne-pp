@@ -1,6 +1,8 @@
 #ifndef INFER_TYPE_HPP
 #define INFER_TYPE_HPP
 
+#include "string_pp.hpp"
+
 #include <string_view>
 #include <cctype>
 
@@ -9,7 +11,6 @@ enum DataType {
     String,
     Integer,
     Float,
-    Double,
     Character,
     Boolean,
     Null,
@@ -17,8 +18,13 @@ enum DataType {
 };
 
 class InferType {
+    private:
+        static bool isInteger(std::string& token);
+        static bool isFloat(std::string& token);
+
     public:
         static DataType infer(std::string_view token);
 };
 }
+
 #endif
