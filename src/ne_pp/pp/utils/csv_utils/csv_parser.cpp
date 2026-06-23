@@ -55,8 +55,4 @@ std::vector<CSVDataColumn> CSVParser::parseColumn() {
 
     return parsedColumns;
 }
-
-DataType CSVParser::findDataType(std::string token) {
-    if (token.empty()) return DataType::Null;
-}
 }
