@@ -4,7 +4,7 @@ namespace ne_pp::pp {
 DataType InferType::infer(std::string_view token) {
     std::string trimmedToken = StringPP(std::string(token)).trim().toString();
     
-    if (trimmedToken.empty()) {
+    if (isNull(trimmedToken)) {
         return DataType::Null;
     }
 
@@ -58,4 +58,12 @@ bool InferType::isFloat(std::string& token) {
 
     return true;
 }
+
+bool InferType::isNull(std::string& token) {
+    if (token.empty()) {
+        return true;
+    }
+
+    return false;
+} 
 }
