@@ -19,8 +19,8 @@ CSVParser::CSVParser(
 std::vector<CSVDataColumn> CSVParser::parseColumn() {
     FileReader fileReader(this->filePath);
     const std::vector<std::string>& corpusBody = fileReader.getCorpusBodyVector();
-    int rowLength = StringPP(corpusBody[0]).split(this->delimiter).size();
-    int columnLength = corpusBody.size();
+    int rowLength = getRowLength(corpusBody);
+    int columnLength = getColumnLength(corpusBody);
     std::vector<CSVDataColumn> parsedColumns(rowLength);
     int startRow = 0;
 
@@ -63,5 +63,31 @@ std::unique_ptr<CSVDataFile> CSVParser::dataFrame() {
     foundFile->columns = this->parseColumn();
 
     return foundFile;
+}
+
+int CSVParser::getRowLength(const std::vector<std::string>& corpusBody) {
+    if (this->explicitRowLength != 0) {
+        return explicitRowLength;
+    }
+
+    else if (header) {
+        return StringPP(corpusBody[0]).split(this->delimiter).size();
+    }
+
+    throw InvalidCSVStructureException("Parser Error: Missing row length");
+}
+
+int CSVParser::getColumnLength(const std::vector<std::string>& corpusBody) {
+    int columnLength = corpusBody.size();
+
+    if (this->explicitColumnLength != 0) {
+        return explicitColumnLength;
+    }
+
+    if (header) {
+        return columnLength - 1;
+    }
+
+    return columnLength;
 }
 }

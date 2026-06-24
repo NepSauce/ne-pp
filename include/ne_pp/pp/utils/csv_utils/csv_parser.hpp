@@ -18,14 +18,14 @@ class CSVParser {
         int explicitColumnLength;
 
         std::vector<CSVDataColumn> parseColumn();
-        int getRowLength();
-        int getColumnLength();
+        int getRowLength(const std::vector<std::string>& corpusBody);
+        int getColumnLength(const std::vector<std::string>& corpusBody);
 
     public:
         CSVParser(const std::string& filePath, 
             bool header, 
             char delimiter, 
-            int explicitRowLength = 0,
+            int explicitRowLength,
             int explicitColumnLength = 0);
         std::unique_ptr<CSVDataFile> dataFrame();
 };
