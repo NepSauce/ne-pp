@@ -50,4 +50,12 @@ std::vector<CSVDataColumn> CSVParser::parseColumn() {
 
     return parsedColumns;
 }
+
+std::unique_ptr<CSVDataFile> CSVParser::dataFrame() {
+    auto foundFile = std::make_unique<CSVDataFile>();
+    foundFile->filePath = this->filePath;
+    foundFile->columns = this->parseColumn();
+
+    return foundFile;
+}
 }
