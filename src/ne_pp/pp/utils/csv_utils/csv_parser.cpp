@@ -3,8 +3,18 @@
 #include "../../../../../include/ne_pp/pp/utils/token_utils/infer_type.hpp"
 
 namespace ne_pp::pp {
-CSVParser::CSVParser(const std::string& filePath, bool header, char delimiter)
-    : filePath(filePath), header(header), delimiter(delimiter) {}
+CSVParser::CSVParser(
+    const std::string& filePath, 
+    bool header, 
+    char delimiter, 
+    int explicitRowLength, 
+    int explicitColumnLength
+)
+    : filePath(filePath), 
+    header(header), 
+    delimiter(delimiter), 
+    explicitRowLength(explicitRowLength),
+    explicitColumnLength(explicitColumnLength) {}
 
 std::vector<CSVDataColumn> CSVParser::parseColumn() {
     FileReader fileReader(this->filePath);
@@ -31,7 +41,6 @@ std::vector<CSVDataColumn> CSVParser::parseColumn() {
     try {
         for (int i = startRow; i < columnLength; ++i) {
             std::vector<std::string> line = StringPP(corpusBody[i]).split(this->delimiter);
-
             int currentDataRowIndex = i - startRow;
 
             for (int j = 0; j < rowLength; ++j) {
