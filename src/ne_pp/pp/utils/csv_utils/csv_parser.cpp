@@ -71,7 +71,7 @@ std::unique_ptr<CSVDataFile> CSVParser::dataFrame() {
     return foundFile;
 }
 
-size_t CSVParser::getRowLength(const std::vector<std::string>& corpusBody) {
+size_t CSVParser::getRowLength(const std::vector<std::string>& corpusBody) const {
     if (this->explicitRowLength != 0) {
         return explicitRowLength;
     }
@@ -83,7 +83,7 @@ size_t CSVParser::getRowLength(const std::vector<std::string>& corpusBody) {
     throw InvalidCSVStructureException("Parser Error: Missing row length");
 }
 
-size_t CSVParser::getColumnLength(const std::vector<std::string>& corpusBody) {
+size_t CSVParser::getColumnLength(const std::vector<std::string>& corpusBody) const {
     size_t columnLength = corpusBody.size();
 
     if (this->explicitColumnLength != 0) {
