@@ -1,3 +1,4 @@
-id,name
-1,Alice
-2,Bob
+id,name,location,age
+1,Alice,halifax,101
+2,
+3,Zaw
