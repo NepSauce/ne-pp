@@ -42,6 +42,33 @@ class LengthMismatchException : public std::exception {
         }
 };
 
+
+class NullPointerException : public std::exception {
+    private:
+        std::string message;
+    
+    public:
+        NullPointerException(const std::string& message)
+            : message(message) {}
+        
+        const char* what() const noexcept override {
+            return message.c_str();
+        }
+};
+
+class OutOfBoundsException : public std::exception {
+    private:
+        std::string message;
+    
+    public:
+        OutOfBoundsException(const std::string& message)
+            : message(message) {}
+        
+        const char* what() const noexcept override {
+            return message.c_str();
+        }
+};
+
 class EmptyStringException : public std::exception {
     private:
         std::string message;
