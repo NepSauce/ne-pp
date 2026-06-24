@@ -84,10 +84,6 @@ int CSVParser::getColumnLength(const std::vector<std::string>& corpusBody) {
         return explicitColumnLength;
     }
 
-    if (header) {
-        return columnLength - 1;
-    }
-
     return columnLength;
 }
 }

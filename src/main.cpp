@@ -9,7 +9,7 @@ int main() {
     std::cout << ne_pp::pp::StringPP(testStr).trimRight().toString() << std::endl;
     std::cout << ne_pp::pp::StringPP(testStr).trim().toString() << std::endl;
     
-    ne_pp::pp::CSVParser parser("../corpus/csv/comma_delimiter.csv", true, ',');
+    ne_pp::pp::CSVParser parser("../corpus/csv/comma_delimiter.csv", true, ',', 2);
     std::unique_ptr<ne_pp::pp::CSVDataFile> myFrame = parser.dataFrame();
 
     for (size_t j = 0; j < myFrame->columns.size(); ++j) {
