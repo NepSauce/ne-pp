@@ -44,10 +44,16 @@ std::vector<CSVDataColumn> CSVParser::parseColumn() {
             int currentDataRowIndex = i - startRow;
 
             for (int j = 0; j < rowLength; ++j) {
-                if (StringPP(line[j]).trim().toString().empty()) {
+                if (j < static_cast<int>(line.size())) {
+                    if (StringPP(line[j]).trim().toString().empty()) {
+                        parsedColumns[j].nullPosition.push_back(currentDataRowIndex);
+                    }
+                    parsedColumns[j].data.push_back(std::move(line[j]));
+                } 
+                else {
                     parsedColumns[j].nullPosition.push_back(currentDataRowIndex);
+                    parsedColumns[j].data.push_back("");
                 }
-                parsedColumns[j].data.push_back(std::move(line[j]));
             }
         }
     } catch (const std::out_of_range& e) {
