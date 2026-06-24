@@ -32,9 +32,6 @@ std::vector<CSVDataColumn> CSVParser::parseColumn() {
         for (int i = startRow; i < columnLength; ++i) {
             std::vector<std::string> line = StringPP(corpusBody[i]).split(this->delimiter);
 
-            if (line.size() != static_cast<size_t>(rowLength)) {
-                throw LengthMismatchException("Malformed data row at line " + std::to_string(i));
-            }
             int currentDataRowIndex = i - startRow;
 
             for (int j = 0; j < rowLength; ++j) {
