@@ -40,8 +40,12 @@ std::vector<CSVDataColumn> CSVParser::parseColumn() {
             if (line.size() != static_cast<size_t>(rowLength)) {
                 throw LengthMismatchException("Malformed data row at line " + std::to_string(i));
             }
+            int currentDataRowIndex = i - startRow;
 
             for (int j = 0; j < rowLength; ++j) {
+                if (StringPP(line[j]).trim().toString().empty()) {
+                    parsedColumns[j].nullPosition.push_back(currentDataRowIndex);
+                }
                 parsedColumns[j].data.push_back(std::move(line[j]));
             }
         }
@@ -50,18 +54,5 @@ std::vector<CSVDataColumn> CSVParser::parseColumn() {
     } 
 
     return parsedColumns;
-}
-
-std::vector<int> getNullIndexVector(std::vector<std::string>& dataVector) {
-    std::vector<int> nullIndexVector;
-    size_t dataLength = dataVector.size();
-
-    for (int i = 0; i < dataLength; ++i) {
-        if (dataVector[i].empty()) {
-            nullIndexVector.push_back(i);
-        }
-    }
-
-    return nullIndexVector;
 }
 }
