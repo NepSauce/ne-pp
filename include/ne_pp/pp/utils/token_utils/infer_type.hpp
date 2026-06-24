@@ -18,12 +18,11 @@ enum DataType {
 };
 
 class InferType {
-    private:
-        static bool isInteger(std::string& token);
-        static bool isFloat(std::string& token);
-
     public:
         static DataType infer(std::string_view token);
+        static bool isInteger(std::string& token);
+        static bool isFloat(std::string& token);
+        static bool isNull(std::string& token);
 };
 }
 
