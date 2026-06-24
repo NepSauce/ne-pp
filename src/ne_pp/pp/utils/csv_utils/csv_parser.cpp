@@ -51,4 +51,17 @@ std::vector<CSVDataColumn> CSVParser::parseColumn() {
 
     return parsedColumns;
 }
+
+std::vector<int> getNullIndexVector(std::vector<std::string>& dataVector) {
+    std::vector<int> nullIndexVector;
+    size_t dataLength = dataVector.size();
+
+    for (int i = 0; i < dataLength; ++i) {
+        if (dataVector[i].empty()) {
+            nullIndexVector.push_back(i);
+        }
+    }
+
+    return nullIndexVector;
+}
 }

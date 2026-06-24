@@ -16,7 +16,7 @@ class CSVParser {
         char delimiter;
 
         std::vector<CSVDataColumn> parseColumn();
-        std::vector<std::string> splitStringVector(std::string line);
+        std::vector<int> getNullIndexVector(std::vector<std::string>& dataColumn);
 
     public:
         CSVParser(const std::string& filePath, bool header, char delimiter);
