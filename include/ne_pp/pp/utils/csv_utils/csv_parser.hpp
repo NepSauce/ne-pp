@@ -31,5 +31,4 @@ class CSVParser {
         std::unique_ptr<CSVDataFile> dataFrame();
 };
 }
-
 #endif
