@@ -24,7 +24,7 @@ class StringPP {
     StringPP& toUpper();
     StringPP& capitalize();
     std::vector<std::string> split(char delimiter) const;
-    int find(char c);
+    size_t find(char c);
 
     std::string toString() const;
 };    
