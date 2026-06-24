@@ -17,7 +17,7 @@ enum CorpusType {
 struct CSVDataFile {
     std::string filePath;
     std::vector<CSVDataColumn> columns;
-    std::unordered_map<std::string, int> headerIndex;
+    std::unordered_map<std::string, size_t>headerIndex;
 };
 }
 #endif

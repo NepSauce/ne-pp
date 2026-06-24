@@ -8,7 +8,6 @@ StringPP& StringPP::trimLeft() {
     auto it = std::find_if(this->value.begin(), this->value.end(), [](unsigned char ch) {
         return !std::isspace(ch);
     });
-    
     this->value.erase(this->value.begin(), it);
 
     return *this;
@@ -18,7 +17,6 @@ StringPP& StringPP::trimRight() {
     auto it = std::find_if(this->value.rbegin(), this->value.rend(), [](unsigned char ch) {
         return !std::isspace(ch);
     });
-
     this->value.erase(it.base(), this->value.end());
 
     return *this;

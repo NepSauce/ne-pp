@@ -19,8 +19,8 @@ const std::vector<std::string>& FileReader::getCorpusBodyVector() {
     while (std::getline(file, line)) {
         this->corpusBody.push_back(line);
     }
-
     file.close();
+    
     return this->corpusBody;
 }
 }

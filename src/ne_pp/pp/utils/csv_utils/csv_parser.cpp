@@ -7,8 +7,8 @@ CSVParser::CSVParser(
     const std::string& filePath, 
     bool header, 
     char delimiter, 
-    int explicitRowLength, 
-    int explicitColumnLength
+    size_t explicitRowLength, 
+    size_t explicitColumnLength
 )
     : filePath(filePath), 
     header(header), 
@@ -19,32 +19,32 @@ CSVParser::CSVParser(
 std::vector<CSVDataColumn> CSVParser::parseColumn() {
     FileReader fileReader(this->filePath);
     const std::vector<std::string>& corpusBody = fileReader.getCorpusBodyVector();
-    int rowLength = getRowLength(corpusBody);
-    int columnLength = getColumnLength(corpusBody);
+    size_t rowLength = getRowLength(corpusBody);
+    size_t columnLength = getColumnLength(corpusBody);
     std::vector<CSVDataColumn> parsedColumns(rowLength);
-    int startRow = 0;
+    size_t startRow = 0;
 
     if (this->header) {
         std::vector<std::string> headerVector = StringPP(corpusBody[0]).split(this->delimiter);
 
-        for (int i = 0; i < rowLength; i++) {
+        for (size_t i = 0; i < rowLength; i++) {
             parsedColumns[i].header = headerVector[i];
         }
         startRow = 1;
     }
-    int expectedRows = columnLength - startRow;
+    size_t expectedRows = columnLength - startRow;
 
-    for (int j = 0; j < rowLength; ++j) {
+    for (size_t j = 0; j < rowLength; ++j) {
         parsedColumns[j].data.reserve(expectedRows);
     }
 
     try {
-        for (int i = startRow; i < columnLength; ++i) {
+        for (size_t i = startRow; i < columnLength; ++i) {
             std::vector<std::string> line = StringPP(corpusBody[i]).split(this->delimiter);
-            int currentDataRowIndex = i - startRow;
+            size_t currentDataRowIndex = i - startRow;
 
-            for (int j = 0; j < rowLength; ++j) {
-                if (j < static_cast<int>(line.size())) {
+            for (size_t j = 0; j < rowLength; ++j) {
+                if (j < static_cast<size_t>(line.size())) {
                     if (StringPP(line[j]).trim().toString().empty()) {
                         parsedColumns[j].nullPosition.push_back(currentDataRowIndex);
                     }
@@ -71,7 +71,7 @@ std::unique_ptr<CSVDataFile> CSVParser::dataFrame() {
     return foundFile;
 }
 
-int CSVParser::getRowLength(const std::vector<std::string>& corpusBody) {
+size_t CSVParser::getRowLength(const std::vector<std::string>& corpusBody) const {
     if (this->explicitRowLength != 0) {
         return explicitRowLength;
     }
@@ -83,8 +83,8 @@ int CSVParser::getRowLength(const std::vector<std::string>& corpusBody) {
     throw InvalidCSVStructureException("Parser Error: Missing row length");
 }
 
-int CSVParser::getColumnLength(const std::vector<std::string>& corpusBody) {
-    int columnLength = corpusBody.size();
+size_t CSVParser::getColumnLength(const std::vector<std::string>& corpusBody) const {
+    size_t columnLength = corpusBody.size();
 
     if (this->explicitColumnLength != 0) {
         return explicitColumnLength;
