@@ -9,12 +9,9 @@ CSVParser::CSVParser(const std::string& filePath, bool header, char delimiter)
 std::vector<CSVDataColumn> CSVParser::parseColumn() {
     FileReader fileReader(this->filePath);
     const std::vector<std::string>& corpusBody = fileReader.getCorpusBodyVector();
-
     int rowLength = StringPP(corpusBody[0]).split(this->delimiter).size();
     int columnLength = corpusBody.size();
-
     std::vector<CSVDataColumn> parsedColumns(rowLength);
-
     int startRow = 0;
 
     if (this->header) {
@@ -23,10 +20,8 @@ std::vector<CSVDataColumn> CSVParser::parseColumn() {
         for (int i = 0; i < rowLength; i++) {
             parsedColumns[i].header = headerVector[i];
         }
-        
         startRow = 1;
     }
-
     int expectedRows = columnLength - startRow;
 
     for (int j = 0; j < rowLength; ++j) {
