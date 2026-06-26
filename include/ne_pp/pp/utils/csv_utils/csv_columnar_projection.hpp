@@ -10,7 +10,7 @@ class CSVColumnarProjection {
         std::vector<size_t> columnIndices;
 
     public:
-        CSVColumnarProjection(std::unique_ptr<CSVDataFile> dataFile, const std::vector<size_t>& columnIndices);
+        CSVColumnarProjection(std::unique_ptr<CSVDataFile>& dataFile, const std::vector<size_t>& columnIndices);
         std::unique_ptr<CSVDataFile> project();
 };
 }
